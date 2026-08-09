@@ -1,0 +1,112 @@
+{
+  "name": "hi-lang-support",
+  "displayName": "Hi Language Support",
+  "description": "Hi language support with LSP",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:hi",
+    "onCommand:hi.restartServer",
+    "onCommand:hi.runFile"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "hi",
+        "extensions": [".hi"],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/hi.svg",
+          "dark": "./icons/hi.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hi",
+        "scopeName": "source.hi",
+        "path": "./syntaxes/hi.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "hi",
+        "path": "./snippets/hi.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "hi.restartServer",
+        "title": "Restart Hi Language Server",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "hi.runFile",
+        "title": "Run Hi Script",
+        "icon": "$(run)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "hi.runFile",
+          "group": "navigation",
+          "when": "editorLangId == hi"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "hi.runFile",
+        "key": "ctrl+shift+r",
+        "when": "editorLangId == hi"
+      }
+    ],
+    "configuration": {
+      "title": "Hi Language",
+      "properties": {
+        "hi.serverPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to hi-lsp executable. Leave empty to auto-detect."
+        },
+        "hi.interpreterPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the Hi interpreter. Leave empty to use 'hi' from PATH. Can be absolute or relative to workspace root."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "@types/vscode": "^1.125.0",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.1"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^10.1.0"
+  }
+}

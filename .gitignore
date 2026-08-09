@@ -1,0 +1,7 @@
+node_modules
+*.vsix
+.env
+.vscode
+out
+.DS_Store
+*.log

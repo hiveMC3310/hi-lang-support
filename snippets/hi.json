@@ -1,0 +1,65 @@
+{
+	"IF block": {
+    "prefix": "IF-END",
+    "body": [
+      "IF ${1:condition} THEN",
+      "    ${2:body}",
+      "END"
+    ],
+    "description": "IF-THEN block"
+  },
+  "IF-ELSE block": {
+    "prefix": "IF-ELSE-END",
+    "body": [
+      "IF ${1:condition} THEN",
+      "    ${2:body}",
+      "ELSE",
+      "    ${3:else_body}",
+      "END"
+    ],
+    "description": "IF-THEN-ELSE block"
+  },
+  "WHILE loop": {
+    "prefix": "WHILE-END",
+    "body": [
+      "WHILE ${1:condition} DO",
+      "    ${2:body}",
+      "END"
+    ],
+    "description": "WHILE loop"
+  },
+  "FOR loop": {
+    "prefix": "FOR-NEXT",
+    "body": [
+      "FOR ${1:i} = ${2:0} TO ${3:10} DO",
+      "    ${4:body}",
+      "NEXT ${5:step}"
+    ],
+    "description": "FOR loop"
+  },
+  "FUNC definition": {
+    "prefix": "FUNC-END",
+    "body": [
+      "FUNC ${1:name}(${2:params})",
+      "    ${3:body}",
+      "    RET ${4:value}",
+      "END"
+    ],
+    "description": "Function definition"
+  },
+  "PRINT": {
+    "prefix": "PRINT-STMT",
+    "body": "PRINT ${1:expression}",
+    "description": "PRINT statement"
+  },
+  "LET": {
+    "prefix": "LET-VAR",
+    "body": "LET ${1:name} = ${2:value}",
+    "description": "Variable declaration"
+  },
+  "IMPORT": {
+    "prefix": "IMPORT-MOD",
+    "body": "IMPORT \"${1:module}\"${2: AS ${3:alias}}",
+    "description": "Import module"
+  }
+}
