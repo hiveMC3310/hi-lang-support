@@ -29,10 +29,10 @@ This extension provides **syntax highlighting**, **IntelliSense**, **code naviga
 3. Search for **Hi Language Support**.
 4. Click **Install**.
 
-### Manual Installation
+### Manual Installation (via VSIX)
 
-1. Download the latest `.vsix` package from the [Releases](https://github.com/hiveMC3310/hi-lang-support/releases) page.
-2. In VS Code, open the Extensions view, click the `...` menu, and select **Install from VSIX…**.
+1. Download the latest `.vsix` file from the [Releases](https://github.com/ваш-репо/releases) page.
+2. In VS Code, open the Extensions view (`Ctrl+Shift+X`), click the `...` menu, and select **Install from VSIX…**.
 3. Choose the downloaded file.
 
 ---
