@@ -3,6 +3,10 @@
   "displayName": "Hi Language Support",
   "description": "Hi language support with LSP",
   "version": "0.0.1",
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/hiveMC3310/hi-lang-support.git"
+  },
   "engines": {
     "vscode": "^1.125.0"
   },
