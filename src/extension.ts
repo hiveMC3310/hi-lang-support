@@ -214,13 +214,21 @@ export function activate(context: vscode.ExtensionContext) {
 
 		let terminal: vscode.Terminal
 		if (alwaysNew || !lastTerminal) {
-			terminal = vscode.window.createTerminal('Hi Run')
+			const terminalOptions: vscode.TerminalOptions = { name: 'Hi Run' }
+			if (process.platform === 'win32') {
+				terminalOptions.shellPath = 'powershell.exe'
+			}
+			terminal = vscode.window.createTerminal(terminalOptions)
 			lastTerminal = terminal
 		} else {
 			const allTerminals = vscode.window.terminals
 			const stillExists = allTerminals.some((t) => t === lastTerminal)
 			if (!stillExists) {
-				terminal = vscode.window.createTerminal('Hi Run')
+				const terminalOptions: vscode.TerminalOptions = { name: 'Hi Run' }
+				if (process.platform === 'win32') {
+					terminalOptions.shellPath = 'powershell.exe'
+				}
+				terminal = vscode.window.createTerminal(terminalOptions)
 				lastTerminal = terminal
 			} else {
 				terminal = lastTerminal
@@ -229,10 +237,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 		let command: string
 		if (process.platform === 'win32') {
-			command = `cmd /c ""${interpreter}" "${filePath}""`
+			command = `& "${interpreter}" "${filePath}"`
 		} else {
 			command = `"${interpreter}" "${filePath}"`
 		}
+
 		terminal.show()
 		terminal.sendText(command)
 	})
