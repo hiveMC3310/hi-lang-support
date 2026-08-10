@@ -45,7 +45,7 @@
       "patterns": [
         {
           "name": "keyword.control.hi",
-          "match": "\\b(LET|IF|THEN|ELSE|END|WHILE|DO|FOR|TO|NEXT|FUNC|RET|BREAK|PRINT|IMPORT|AS|TRUE|FALSE|AND|OR|NOT)\\b"
+          "match": "\\b(LET|INPUT|IF|THEN|ELSE|END|WHILE|DO|FOR|TO|NEXT|FUNC|RET|BREAK|PRINT|IMPORT|AS|TRUE|FALSE|AND|OR|NOT)\\b"
         }
       ]
     },

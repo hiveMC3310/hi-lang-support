@@ -15,6 +15,7 @@ import {
 
 let client: LanguageClient | undefined
 let outputChannel: vscode.OutputChannel
+let lastTerminal: vscode.Terminal | undefined
 
 // Helper: resolve interpreter path
 function findInterpreterPath(
@@ -199,7 +200,6 @@ export function activate(context: vscode.ExtensionContext) {
 			return
 		}
 
-		// Get interpreter path from settings (absolute or relative)
 		const config = vscode.workspace.getConfiguration('hi')
 		const userInterpreter = config.get<string>('interpreterPath')
 		const interpreter = findInterpreterPath(userInterpreter, context)
@@ -210,9 +210,31 @@ export function activate(context: vscode.ExtensionContext) {
 			return
 		}
 
-		const terminal = vscode.window.createTerminal('Hi Run')
-		terminal.sendText(`"${interpreter}" "${filePath}"`)
+		const alwaysNew = config.get<boolean>('alwaysNewTerminal', false)
+
+		let terminal: vscode.Terminal
+		if (alwaysNew || !lastTerminal) {
+			terminal = vscode.window.createTerminal('Hi Run')
+			lastTerminal = terminal
+		} else {
+			const allTerminals = vscode.window.terminals
+			const stillExists = allTerminals.some((t) => t === lastTerminal)
+			if (!stillExists) {
+				terminal = vscode.window.createTerminal('Hi Run')
+				lastTerminal = terminal
+			} else {
+				terminal = lastTerminal
+			}
+		}
+
+		let command: string
+		if (process.platform === 'win32') {
+			command = `cmd /c ""${interpreter}" "${filePath}""`
+		} else {
+			command = `"${interpreter}" "${filePath}"`
+		}
 		terminal.show()
+		terminal.sendText(command)
 	})
 	context.subscriptions.push(runCommand)
 
