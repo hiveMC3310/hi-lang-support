@@ -22,13 +22,6 @@ This extension provides **syntax highlighting**, **IntelliSense**, **code naviga
 
 ## Installation
 
-### From the VS Code Marketplace (recommended)
-
-1. Open VS Code.
-2. Go to the Extensions view (`Ctrl+Shift+X`).
-3. Search for **Hi Language Support**.
-4. Click **Install**.
-
 ### Manual Installation (via VSIX)
 
 1. Download the latest `.vsix` file from the [Releases](https://github.com/ваш-репо/releases) page.

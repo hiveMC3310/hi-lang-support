@@ -2,7 +2,7 @@
 	"name": "hi-lang-support",
 	"displayName": "Hi Language Support",
 	"description": "Hi language support with LSP",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/hiveMC3310/hi-lang-support.git"
