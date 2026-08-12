@@ -24,7 +24,7 @@ This extension provides **syntax highlighting**, **IntelliSense**, **code naviga
 
 ### Manual Installation (via VSIX)
 
-1. Download the latest `.vsix` file from the [Releases](https://github.com/ваш-репо/releases) page.
+1. Download the latest `.vsix` file from the [Releases](https://github.com/hi-lang-support/releases) page.
 2. In VS Code, open the Extensions view (`Ctrl+Shift+X`), click the `...` menu, and select **Install from VSIX…**.
 3. Choose the downloaded file.
 
